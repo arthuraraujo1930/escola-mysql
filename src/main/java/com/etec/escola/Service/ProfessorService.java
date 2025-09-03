@@ -1,33 +1,36 @@
 package com.etec.escola.Service;
 
 import com.etec.escola.Interface.AlunoRepository;
-import com.etec.escola.Models.Aluno;
+
+import com.etec.escola.Interface.ProfessorRepository;
+import com.etec.escola.Models.Professor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AlunoService {
-    private final AlunoRepository AlunoRepository;
+public class ProfessorService {
+    private final ProfessorRepository professorRepository;
 
-    public AlunoService(AlunoRepository rep) {
-        AlunoRepository = rep;
+    public ProfessorService(ProfessorRepository professorRepository) {
+        this.professorRepository = professorRepository;
     }
 
-    public List<Aluno> buscarAlunos() {
-        return AlunoRepository.findAll();
+
+    public List<Professor> buscarProfessor() {
+        return professorRepository.findAll();
     }
 
-    public Aluno salvarAluno(Aluno aluno) {
-        return AlunoRepository.save(aluno);
+    public Professor salvarProfessor(Professor professor) {
+        return professorRepository.save(professor);
     }
 
-    public Aluno buscarAlunoId(long id) {
-        return AlunoRepository.findById(id).orElse(null);
+    public Professor buscarProfessorId(long id) {
+        return professorRepository.findById(id).orElse(null);
     }
 
-    public void deletarAluno(long id){
-        AlunoRepository.deleteById(id);
+    public void deletarProfessor(long id){
+        professorRepository.deleteById(id);
     }
 
 }
